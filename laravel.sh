@@ -5,6 +5,7 @@ if [ ! -f "vendor/autoload.php" ]; then
 fi
 npm install
 
+
 php artisan migrate --force
 php artisan key:generate
 php artisan cache:clear
