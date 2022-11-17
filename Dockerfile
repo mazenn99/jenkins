@@ -37,8 +37,8 @@ COPY . .
 USER $user
 
 RUN chmod -R 775 /var/www
-RUN chmod -R 775 /var/www/app/vendor
-RUN chmod -R 777 /var/www/app/storage
+RUN chmod -R 775 /var/www/vendor
+RUN chmod -R 777 /var/www/storage
 
 
 RUN ./laravel.sh
