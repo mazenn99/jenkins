@@ -35,5 +35,10 @@ WORKDIR /var/www
 COPY . .
 
 USER $user
+#RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+RUN adduser --disabled-password --gecos '' $USER
+RUN adduser $USER sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
 
 RUN ./laravel.sh
