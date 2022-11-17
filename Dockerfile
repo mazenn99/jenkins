@@ -32,10 +32,13 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
-RUN chown -R $user:$user /var/www
-
 COPY . .
 
 USER $user
+
+RUN chmod -R 775 /var/www
+RUN chmod -R 775 /var/www/app/vendor
+RUN chmod -R 777 /var/www/app/storage
+
 
 RUN ./laravel.sh
