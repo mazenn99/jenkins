@@ -36,6 +36,6 @@ COPY . .
 
 USER $user
 
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data *
 
 RUN ./laravel.sh
