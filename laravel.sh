@@ -15,4 +15,5 @@ npm run dev
 
 php artisan serv
 
+
 exec docker-php-entrypoint "$@"
