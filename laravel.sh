@@ -13,4 +13,6 @@ php artisan config:clear
 php artisan route:clear
 npm run dev
 
+php artisan serv
+
 exec docker-php-entrypoint "$@"

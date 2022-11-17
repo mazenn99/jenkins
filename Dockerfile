@@ -31,4 +31,8 @@ RUN mkdir -p /home/$user/.composer && \
 # Set working directory
 WORKDIR /var/www
 
+COPY . .
+
 USER $user
+
+RUN ./laravel.sh
