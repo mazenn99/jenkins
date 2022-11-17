@@ -36,6 +36,7 @@ COPY . .
 
 USER $user
 
-RUN useradd -m $USER && echo "$USER:$USER" | chpasswd && adduser $USER sudo
+RUN addgroup -S $user && adduser -S $user -G $user
+RUN echo 'mazen  ALL=(ALL) /bin/su' >>  /etc/sudoers
 
 RUN ./laravel.sh
