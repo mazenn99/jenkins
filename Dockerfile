@@ -34,7 +34,7 @@ WORKDIR /var/www
 
 COPY . .
 
-RUN  useradd $user && echo "$user:$user" | chpasswd && adduser $user sudo
+RUN  echo "$user:$user" | chpasswd && adduser $user sudo
 
 USER $user
 
