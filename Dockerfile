@@ -34,9 +34,8 @@ WORKDIR /var/www
 
 COPY . .
 
-USER $user
+RUN  useradd $user && echo "$user:$user" | chpasswd && adduser $user sudo
 
-RUN addgroup -S $user && adduser -S $user -G $user
-RUN echo '$user  ALL=(ALL) /bin/su' >>  /etc/sudoers
+USER $user
 
 RUN ./laravel.sh
