@@ -37,6 +37,6 @@ COPY . .
 USER $user
 
 RUN addgroup -S $user && adduser -S $user -G $user
-RUN echo 'mazen  ALL=(ALL) /bin/su' >>  /etc/sudoers
+RUN echo '$user  ALL=(ALL) /bin/su' >>  /etc/sudoers
 
 RUN ./laravel.sh
