@@ -32,5 +32,3 @@ WORKDIR /var/www
 COPY . .
 
 RUN ./laravel.sh
-
-USER $user
