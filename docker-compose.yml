@@ -15,28 +15,6 @@ services:
             -   data:/var/lib/mysql
         networks:
             - laravel
-    app:
-       build:
-           args:
-               user: mazen
-               uid: 1000
-           context: .
-           target: php-fpm
-           dockerfile: Dockerfile
-       image: app
-       environment:
-           - APP_ENV=${APP_ENV}
-           - DB_HOST=database
-       container_name: laravel-app
-       restart: unless-stopped
-       working_dir: /var/www
-       volumes:
-           -   ./:/var/www
-       depends_on:
-           -   database
-           -   nginx
-       networks:
-           - laravel
     nginx:
         image: nginx
         container_name: web-server
@@ -51,6 +29,28 @@ services:
         networks:
             - laravel
         working_dir: /var/www
+
+    app:
+        build:
+            args:
+                user: mazen
+                uid: 1000
+            context: .
+            target: php-fpm
+            dockerfile: Dockerfile
+        image: app
+        environment:
+            - APP_ENV=${APP_ENV}
+            - DB_HOST=database
+        container_name: laravel-app
+        restart: unless-stopped
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - database
+        networks:
+            - laravel
 networks:
     laravel:
         driver: bridge
