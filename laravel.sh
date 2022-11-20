@@ -9,16 +9,10 @@ sudo chown $USER:$USER /var/www/ -R
 chmod -R 777 storage/
 chmod -R 777 bootstrap/cache/
 
-npm install
-
-
 php artisan migrate --force
 php artisan key:generate
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
-npm run dev
-
-php artisan serv
 
 exec docker-php-entrypoint "$@"
