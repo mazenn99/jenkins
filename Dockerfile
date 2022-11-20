@@ -2,6 +2,7 @@ FROM php:8.1-fpm as php-fpm
 
 # Arguments defined in docker-compose.yml
 ARG user
+ARG uid
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -33,8 +34,8 @@ WORKDIR /var/www
 
 COPY . .
 
-#RUN  echo "$user:$user" | chpasswd && adduser $user sudo
-
-USER $user
+USER root
 
 RUN ./laravel.sh
+
+USER $user

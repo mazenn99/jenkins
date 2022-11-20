@@ -18,7 +18,8 @@ services:
     app:
        build:
            args:
-               user: root
+               user: mazen
+               uid: 1000
            context: .
            target: php-fpm
            dockerfile: Dockerfile
