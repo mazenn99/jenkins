@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -f "vendor/autoload.php" ]; then
-    composer install --optimize-autoloader --no-dev
+    composer install --optimize-autoloader --no-dev -vvv
 fi
 
 sudo chown $USER:$USER /var/www/ -R

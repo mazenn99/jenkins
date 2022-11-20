@@ -34,6 +34,7 @@ services:
            -   ./:/var/www
        depends_on:
            -   database
+           -   nginx
        networks:
            - laravel
     nginx:
