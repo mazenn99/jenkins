@@ -1,21 +1,30 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('clone') {
             steps {
-                echo 'Building..'
+                echo 'Start cloning from github ................................................'
+                git branch: 'main', url: 'https://github.com/mazenn99/jenkins'
             }
         }
-        stage('Test') {
+        stage('building') {
             steps {
-                echo 'Testing..'
+                echo 'starting build from docker-compose.yml ...................................'
+                step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true])
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+//         stage('push') {
+//             steps {
+//                 echo 'push all service into container registry .................................'
+//             }
+//         }
+//
+//         stage('running') {
+//             steps {
+//                 echo 'running the container .........................................'
+//
+//             }
+//         }
     }
 }
 
